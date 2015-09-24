@@ -55,9 +55,9 @@ public class MyPortletUI extends UI {
             @Override
             public void run() {
 
-                while (i++ < 10) {
+                while (i++ < 50) {
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();

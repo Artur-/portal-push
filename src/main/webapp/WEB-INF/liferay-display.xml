@@ -3,6 +3,6 @@
 
 <display>
 	<category name="category.sample">
-		<portlet id="Vaadin Portal Push PoC" />
+		<portlet id="Vaadin Push in Portal PoC" />
 	</category>
 </display>

@@ -8,8 +8,8 @@
 
 	<portlet>
 		<description>Write a short description about your portlet.</description>
-		<portlet-name>My simple Vaadin portlet</portlet-name>
-		<display-name>My Vaadin portlet</display-name>
+		<portlet-name>Vaadin Push in Portal PoC</portlet-name>
+		<display-name>Vaadin Push in Portal PoC</display-name>
 
 		<portlet-class>org.vaadin.artur.portletpush.CustomVaadinPortlet</portlet-class>
 
@@ -30,8 +30,8 @@
 
 
 		<portlet-info>
-			<title>My Vaadin portlet</title>
-			<short-title>Hello World</short-title>
+			<title>Vaadin Push in Portal PoC</title>
+			<short-title>Vaadin Push PoC</short-title>
 			<keywords>Vaadin 7</keywords>
 		</portlet-info>
 
