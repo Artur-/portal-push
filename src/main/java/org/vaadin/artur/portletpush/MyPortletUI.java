@@ -1,16 +1,15 @@
 package org.vaadin.artur.portletpush;
 
 import javax.portlet.PortletContext;
+import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
 
-import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.service.UserLocalServiceUtil;
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Widgetset;
+import com.vaadin.server.VaadinPortletRequest;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.WrappedPortletSession;
-import com.vaadin.server.WrappedSession;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -23,15 +22,14 @@ import com.vaadin.ui.VerticalLayout;
 @Push
 public class MyPortletUI extends UI {
 
-    // private static Log log = LogFactoryUtil.getLog(MyPortletUI.class);
-
     @Override
     protected void init(VaadinRequest request) {
+        PortletRequest pr = ((VaadinPortletRequest) request)
+                .getPortletRequest();
         final String portletContextName = getPortletContextName(request);
         // Send push requests to our servlet
-        getPushConfiguration().setPushUrl("/" + portletContextName + "/PUSH");
+        getPushConfiguration().setPushUrl(pr.getContextPath() + "/PUSH");
 
-        final Integer numOfRegisteredUsers = getPortalCountOfRegisteredUsers();
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         setContent(layout);
@@ -41,10 +39,8 @@ public class MyPortletUI extends UI {
             @Override
             public void buttonClick(ClickEvent event) {
                 layout.addComponent(new Label(
-                        "Hello, World!<br>This is portlet " + portletContextName
-                                + ".<br>This portal has " + numOfRegisteredUsers
-                                + " registered users (according to the data returned by Liferay API call).",
-                        ContentMode.HTML));
+                        "Hello, World!<br>This is portlet "
+                                + portletContextName, ContentMode.HTML));
 
             }
         });
@@ -65,17 +61,14 @@ public class MyPortletUI extends UI {
                     access(new Runnable() {
                         @Override
                         public void run() {
-                            layout.addComponent(
-                                    new Label("Hello from the server"));
+                            layout.addComponent(new Label(
+                                    "Hello from the server"));
                         }
                     });
                 }
             }
         });
         t.start();
-        WrappedSession ws = getSession().getSession();
-        System.out.println("Session in UI init: " + ws.getId() + " (created: "
-                + ws.getCreationTime() + ")");
     }
 
     private String getPortletContextName(VaadinRequest request) {
@@ -89,16 +82,4 @@ public class MyPortletUI extends UI {
         return portletContextName;
     }
 
-    private Integer getPortalCountOfRegisteredUsers() {
-        Integer result = null;
-
-        try {
-            result = UserLocalServiceUtil.getUsersCount();
-        } catch (SystemException e) {
-            e.printStackTrace();
-            // log.error(e);
-        }
-
-        return result;
-    }
 }

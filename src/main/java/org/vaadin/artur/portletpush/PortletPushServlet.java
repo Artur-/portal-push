@@ -19,23 +19,6 @@ import com.vaadin.server.VaadinServletService;
 public class PortletPushServlet extends VaadinServlet {
 
     @Override
-    protected void service(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
-        HttpSession s = request.getSession(false);
-        if (s == null) {
-            System.out.println("Session null in portlet handleRequest");
-        } else {
-            System.out.println(
-                    "ServletSession.portlet: " + s.getAttribute("portlet"));
-            System.out.println(
-                    "ServletSession.servlet: " + s.getAttribute("servlet"));
-            s.setAttribute("servlet", "Set in servlet service");
-        }
-
-        super.service(request, response);
-    }
-
-    @Override
     protected VaadinServletService createServletService(
             DeploymentConfiguration deploymentConfiguration)
                     throws ServiceException {

@@ -57,21 +57,4 @@ public class CustomVaadinPortlet extends VaadinPortlet {
         return customVaadinPortletService;
     }
 
-    @Override
-    protected void handleRequest(PortletRequest request,
-            PortletResponse response) throws PortletException, IOException {
-        PortletSession s = request.getPortletSession(false);
-        if (s == null) {
-            System.out.println("Session null in portlet handleRequest");
-        } else {
-            System.out.println(
-                    "PortletSession.portlet: " + s.getAttribute("portlet"));
-            System.out.println(
-                    "PortletSession.servlet: " + s.getAttribute("servlet"));
-            s.setAttribute("portlet", "Set in portlet service",
-                    PortletSession.APPLICATION_SCOPE);
-        }
-        super.handleRequest(request, response);
-    }
-
 }
