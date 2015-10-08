@@ -3,7 +3,7 @@
 
 <liferay-portlet-app>
 	<portlet>
-		<portlet-name>My simple Vaadin portlet</portlet-name>
+		<portlet-name>push-demo-portlet</portlet-name>
 		<icon>/icon.png</icon>
 	</portlet>
 	<role-mapper>

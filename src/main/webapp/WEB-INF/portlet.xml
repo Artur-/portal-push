@@ -7,15 +7,15 @@
 	version="2.0">
 
 	<portlet>
-		<description>Write a short description about your portlet.</description>
-		<portlet-name>Vaadin Push in Portal PoC</portlet-name>
-		<display-name>Vaadin Push in Portal PoC</display-name>
+		<description>Vaadin Push in Portal Demo.</description>
+		<portlet-name>push-demo-portlet</portlet-name>
+		<display-name>Vaadin Push in Portal Demo</display-name>
 
-		<portlet-class>org.vaadin.artur.portletpush.CustomVaadinPortlet</portlet-class>
+		<portlet-class>org.vaadin.artur.portalpush.PushPortlet</portlet-class>
 
 		<init-param>
 			<name>UI</name>
-			<value>org.vaadin.artur.portletpush.MyPortletUI</value>
+			<value>org.vaadin.artur.chat.portlet.ChatUI</value>
 		</init-param>
 
 		<init-param>
@@ -30,8 +30,8 @@
 
 
 		<portlet-info>
-			<title>Vaadin Push in Portal PoC</title>
-			<short-title>Vaadin Push PoC</short-title>
+			<title>Vaadin Push in Portal Demo</title>
+			<short-title>Vaadin Push in Portal Demo</short-title>
 			<keywords>Vaadin 7</keywords>
 		</portlet-info>
 
